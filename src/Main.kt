@@ -1,6 +1,6 @@
 class FindMedianSortedArrays {
-	fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
-		val mergedArray = nums1 mergeWith nums2
+	fun findMedianSortedArraysTry1(nums1: IntArray, nums2: IntArray): Double {
+		val mergedArray = nums1.mergeWith(nums2)
 		println(mergedArray.contentToString())
 		val delta = mergedArray.size / 2
 		return if (mergedArray.size % 2 == 0) {
@@ -10,19 +10,24 @@ class FindMedianSortedArrays {
 		}
 	}
 
-	infix fun IntArray.mergeWith(a: IntArray): IntArray {
-		val res = IntArray(size + a.size)
+	fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
+
+	}
+
+	fun IntArray.mergeWith(a: IntArray): IntArray {
+		val aSize = a.size
+		val res = IntArray(size + aSize)
 		var i = 0
 		var j = 0
 		var k = 0
 		while (true) {
-			res[i++] = if (j < size && k < a.size) {
-				if (get(j) < a[k]) get(j++) else a[k++]
-			} else if (j < size) get(j++)
-			else if (k < a.size) a[k++]
-			else break
+			res[i++] = when {
+				j < size && k < aSize -> if (get(j) < a[k]) get(j++) else a[k++]
+				j < size -> get(j++)
+				k < aSize -> a[k++]
+				else -> return res
+			}
 		}
-		return res
 	}
 }
 
