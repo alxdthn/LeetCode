@@ -1,3 +1,3 @@
 fun main() {
-	ZigZagConversion().runTests()
+	Atoi().runTests()
 }
