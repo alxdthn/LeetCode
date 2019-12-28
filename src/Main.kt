@@ -1,3 +1,3 @@
 fun main() {
-	Atoi().runTests()
+	IsPalindrome().runTests()
 }
