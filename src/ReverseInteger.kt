@@ -2,9 +2,17 @@ import kotlin.math.absoluteValue
 
 class ReverseInteger {
     fun reverse(x: Int): Int {
-        val sing = if (x < 0) -1 else 1
+        var num: Int
+        val sing: Int
+
+        if (x < 0) {
+            num = -x
+            sing = -1
+        } else {
+            num = x
+            sing = 1
+        }
         var ans = 0
-        var num = x.absoluteValue
         while (num > 0) {
             ans = ans * 10 + num % 10
             num /= 10
@@ -19,6 +27,7 @@ class ReverseInteger {
             run(120, 21)
             run(0, 0)
             run(654321, 123456)
+            run(1534236469, 0)
         }
     }
 
