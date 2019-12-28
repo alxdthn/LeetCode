@@ -1,5 +1,3 @@
-
-
 fun main() {
 	ZigZagConversion().runTests()
 }
