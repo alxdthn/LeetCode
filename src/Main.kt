@@ -1,5 +1,5 @@
 
 
 fun main() {
-	LongestPalindrome().runTests()
+	ZigZagConversion().runTests()
 }
