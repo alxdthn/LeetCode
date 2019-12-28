@@ -1,18 +1,19 @@
 class ZigZagConversion {
 	fun convert(s: String, numRows: Int): String {
+
 		val columnOffset = (numRows - 1) * 2
 		if (columnOffset == 0) return s
+
 		val len = s.length
 		val answer = StringBuilder()
+
 		for (row in 0 until numRows) {
-			var i = row
-			while (i < len) {
+			for (i in row until len step columnOffset) {
 				answer.append(s[i])
-				val x = (i + columnOffset) - row * 2
+				val x = i + columnOffset - row * 2
 				if (row != 0 && row != numRows - 1 && x < len) {
 					answer.append(s[x])
 				}
-				i += columnOffset
 			}
 		}
 		return answer.toString()
@@ -20,12 +21,12 @@ class ZigZagConversion {
 
 	fun runTests() {
 		Test(::convert).apply {
-			//run("0123456789", 4, "PAHNAPLSIIGYIR")
-			//run("A", 1, "A")
+			run("A", 1, "A")
 			run("AB", 1, "AB")
 			run("ABC", 2, "ACB")
 			run("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR")
 			run("PAYPALISHIRING", 4, "PINALSIGYAHRPI")
+			run("abcdefghijklmnopqrstuvwxyz", 7, "amyblnxzckowdjpveiqufhrtgs")
 		}
 	}
 
